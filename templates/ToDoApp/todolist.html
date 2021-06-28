@@ -11,16 +11,21 @@
 </div>
 <ul>
     {% for i in all_items %}
-    <li>{{i.content}}
+    <li>
+        <h3>
+            {{i.content}}
+        </h3>
         <form action="/delete/{{i.id}}" method = "post">{% csrf_token %}
-            <input type="submit" value="Delete">
+            <button type="submit" class="btn btn-warning">Delete</button>
         </form>
     </li>
     {% endfor %}
-</ul>
-<form action="/add/" method = "post">{% csrf_token %}
-    <input type="text" name="content">
-    <input type="submit" value="Add Todo Item">
-</form>
+    </ul>
+    <form action="/add/" method = "post">{% csrf_token %}
+        <div class="col-xs-4">
+            <input type="text" class="form-control" name="content">
+            <button type="submit" class="btn btn-default position-relative">Add</button>
+        </div>
+    </form>
 </body>
 </html>
