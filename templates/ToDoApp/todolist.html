@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Title</title>
+</head>
+<body>
+<div class="jumbotron text-center">
+    <h1>My To Do List</h1>
+</div>
+<ul>
+    {% for i in all_items %}
+    <li>{{i.content}}
+        <form action="/delete/{{i.id}}" method = "post">{% csrf_token %}
+            <input type="submit" value="Delete">
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+<form action="/add/" method = "post">{% csrf_token %}
+    <input type="text" name="content">
+    <input type="submit" value="Add Todo Item">
+</form>
+</body>
+</html>
